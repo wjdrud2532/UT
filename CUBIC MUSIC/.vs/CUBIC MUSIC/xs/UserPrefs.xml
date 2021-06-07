@@ -1,13 +1,15 @@
 ﻿<Properties StartupConfiguration="{1132B04E-7FA9-BA27-E0A4-34F35C5497CD}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ObjectPool.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Manager/ComboManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Manager/Note.cs" Line="34" Column="34" />
-      <File FileName="Assets/Scripts/Manager/NoteManager.cs" Line="61" Column="33" />
+      <File FileName="Assets/Scripts/Manager/Note.cs" Line="34" Column="1" />
+      <File FileName="Assets/Scripts/Manager/NoteManager.cs" />
       <File FileName="Assets/Scripts/CenterFlame.cs" />
       <File FileName="Assets/Scripts/Controller/PlayerController.cs" />
-      <File FileName="Assets/Scripts/Manager/TimingManager.cs" Line="62" Column="85" />
-      <File FileName="Assets/Scripts/Manager/EffectManager.cs" Line="16" Column="1" />
-      <File FileName="Assets/Scripts/ObjectPool.cs" Line="5" Column="7" />
+      <File FileName="Assets/Scripts/Manager/TimingManager.cs" Line="66" Column="46" />
+      <File FileName="Assets/Scripts/Manager/EffectManager.cs" />
+      <File FileName="Assets/Scripts/ObjectPool.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/Manager/ScoreManager.cs" Line="13" Column="47" />
+      <File FileName="Assets/Scripts/Manager/ComboManager.cs" Line="42" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,8 +18,9 @@
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
                 <Node name="Controller" expanded="True" />
-                <Node name="Manager" expanded="True" />
-                <Node name="ObjectPool.cs" selected="True" />
+                <Node name="Manager" expanded="True">
+                  <Node name="ComboManager.cs" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
@@ -27,7 +30,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f7a4f569-e89e-4f87-aa12-2d61ecc6e330" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="fddbe1b5-7bf0-465d-a3e5-fdf1447fb4e7" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

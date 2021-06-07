@@ -56,13 +56,15 @@
     <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/ObjectPool.cs" />
     <Compile Include="Assets/Scripts/CenterFlame.cs" />
     <Compile Include="Assets/Scripts/Manager/TimingManager.cs" />
     <Compile Include="Assets/Scripts/Manager/NoteManager.cs" />
     <Compile Include="Assets/Scripts/Manager/EffectManager.cs" />
     <Compile Include="Assets/Scripts/Controller/PlayerController.cs" />
     <Compile Include="Assets/Scripts/Manager/Note.cs" />
-    <Compile Include="Assets/Scripts/ObjectPool.cs" />
+    <Compile Include="Assets/Scripts/Manager/ScoreManager.cs" />
+    <Compile Include="Assets/Scripts/Manager/ComboManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Read Me.txt" />

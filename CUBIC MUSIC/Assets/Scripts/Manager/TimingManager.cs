@@ -19,13 +19,14 @@ public class TimingManager : MonoBehaviour
 
     EffectManager theEffect;
 
-
+    ScoreManager theScoreManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
         theEffect = FindObjectOfType<EffectManager>();
+        theScoreManager = FindObjectOfType<ScoreManager>();
 
 
         timingBoxs = new Vector2[timingRect.Length];
@@ -63,6 +64,11 @@ public class TimingManager : MonoBehaviour
                         theEffect.NoteHitEffect();
                     theEffect.JudgementEffect(x);   //판정 x를 넘겨서 그에 맞는 이미지가 출력되도록 한다.
                     //Debug.Log("Hit  " + x);
+
+
+                    //점수 증가
+                    theScoreManager.IncreaseScore(x);   //판정을 알 수 있는 파라미터 x
+
                     return;
                 }
             }
