@@ -21,12 +21,15 @@ public class TimingManager : MonoBehaviour
 
     ScoreManager theScoreManager;
 
+    ComboManager theComboManager;
+
 
     // Start is called before the first frame update
     void Start()
     {
         theEffect = FindObjectOfType<EffectManager>();
         theScoreManager = FindObjectOfType<ScoreManager>();
+        theComboManager = FindObjectOfType<ComboManager>();
 
 
         timingBoxs = new Vector2[timingRect.Length];
@@ -40,7 +43,7 @@ public class TimingManager : MonoBehaviour
         }
     }
 
-    public void CheckTiming()
+    public bool CheckTiming()
     {
         for (int i = 0; i < boxNoteList.Count; i++)
         {
@@ -69,14 +72,16 @@ public class TimingManager : MonoBehaviour
                     //점수 증가
                     theScoreManager.IncreaseScore(x);   //판정을 알 수 있는 파라미터 x
 
-                    return;
+                    return true;
                 }
             }
             //판정범위의 개수만큼 반복 -> 어느 범위에 있는지 판
 
             
         }
+        theComboManager.ResetCombo();
         theEffect.JudgementEffect(timingBoxs.Length - 1);
+        return false;
         //Debug.Log("MISS");
     }
 

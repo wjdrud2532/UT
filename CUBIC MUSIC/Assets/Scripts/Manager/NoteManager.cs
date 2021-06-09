@@ -14,11 +14,13 @@ public class NoteManager : MonoBehaviour
 
     TimingManager TheTimingManager;
     EffectManager theEffectManager;
+    ComboManager theComboManager;
 
     private void Start()
     {
         theEffectManager = FindObjectOfType<EffectManager>();
         TheTimingManager = GetComponent<TimingManager>();
+        theComboManager = FindObjectOfType<ComboManager>();
     }
 
     // Update is called once per frame
@@ -49,7 +51,10 @@ public class NoteManager : MonoBehaviour
         if(collision.CompareTag("Note"))
         {
             if (collision.GetComponent<Note>().GetNoteFlag())   //이미지의 활성상태를 리턴한다 -> 노트판정이 완료되어 이미지를 지웠다면 끝에 다다랐을 때 miss를 활성화하지 않는다.
+            {
                 theEffectManager.JudgementEffect(3);
+                theComboManager.ResetCombo();
+            }
             TheTimingManager.boxNoteList.Remove(collision.gameObject);  //노드가 파괴될ㄷ 때 해당 노트를 삭
 
             ObjectPool.instance.noteQueue.Enqueue(collision.gameObject);     //가져온 객체를 반납   

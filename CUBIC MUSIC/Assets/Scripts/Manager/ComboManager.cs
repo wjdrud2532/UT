@@ -9,8 +9,14 @@ public class ComboManager : MonoBehaviour
 
     int currentCombo = 0;
 
+
+    Animator myAnim;
+    string anumComboUp = "ComboUp";
+
+    
     private void Start()
     {
+        myAnim = GetComponent<Animator>();
         txtCombo.gameObject.SetActive(false);
         goComboImage.SetActive(false);
     }
@@ -24,6 +30,8 @@ public class ComboManager : MonoBehaviour
         {
             txtCombo.gameObject.SetActive(true);
             goComboImage.SetActive(true);
+
+            myAnim.SetTrigger(anumComboUp);
         }
     }
 

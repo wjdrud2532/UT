@@ -31,8 +31,13 @@ public class ScoreManager : MonoBehaviour
         //콤보 증가
         theCombo.IncreaseCombo();
 
+        //콤보 보너스 점수 계산      현재콤보 / 10 * 10      콤보구간 10~19=10점, 20~29-20점
+        int t_currentCombo = theCombo.GetCurrentCombo();
+        int t_bonusComboScore = (t_currentCombo / 10) * comboBonusScore;
+            
+
         //판정 가중치 계산
-        int t_incraseScore = increaseScore; //증가될 점수
+        int t_incraseScore = increaseScore + t_bonusComboScore; //증가될 점수
         t_incraseScore = (int)(t_incraseScore * weight[p_JudgementState]);    //판정에 따른 가중치
 
         //점수 반영

@@ -60,11 +60,12 @@
     <Compile Include="Assets/Scripts/CenterFlame.cs" />
     <Compile Include="Assets/Scripts/Manager/TimingManager.cs" />
     <Compile Include="Assets/Scripts/Manager/NoteManager.cs" />
+    <Compile Include="Assets/Scripts/Manager/ComboManager.cs" />
+    <Compile Include="Assets/Scripts/Manager/ScoreManager.cs" />
     <Compile Include="Assets/Scripts/Manager/EffectManager.cs" />
     <Compile Include="Assets/Scripts/Controller/PlayerController.cs" />
     <Compile Include="Assets/Scripts/Manager/Note.cs" />
-    <Compile Include="Assets/Scripts/Manager/ScoreManager.cs" />
-    <Compile Include="Assets/Scripts/Manager/ComboManager.cs" />
+    <Compile Include="Assets/Scripts/Controller/CamaraController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Read Me.txt" />
