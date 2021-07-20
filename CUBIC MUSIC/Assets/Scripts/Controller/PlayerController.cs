@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     //이
     [SerializeField] float moveSpeed = 3;
     Vector3 dir = new Vector3();
-    Vector3 destPos = new Vector3();
+    public Vector3 destPos = new Vector3();
 
     //회전
     [SerializeField] float spinSpeed = 270;
@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
         {
             if (canMove)
             {
+                Calc();
+
                 //판정체크
                 if (TheTimingManager.CheckTiming())
                 {
@@ -51,7 +53,8 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    void StartAction()
+
+    void Calc()
     {
         //방향계산
         //                                  상하 움직임 0
@@ -66,6 +69,11 @@ public class PlayerController : MonoBehaviour
         fakeCube.RotateAround(transform.position, rotDir, spinSpeed);        //해당 물체의 주변을 공전함
         destRot = fakeCube.rotation;
 
+    }
+
+    void StartAction()
+    {
+        
         StartCoroutine(MoveCo());
         StartCoroutine(SpinCo());
         StartCoroutine(RecoilCo());

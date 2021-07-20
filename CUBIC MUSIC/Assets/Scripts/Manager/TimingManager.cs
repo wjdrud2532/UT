@@ -23,6 +23,9 @@ public class TimingManager : MonoBehaviour
 
     ComboManager theComboManager;
 
+    StageManager theStageManager;
+
+    PlayerController thePlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +33,8 @@ public class TimingManager : MonoBehaviour
         theEffect = FindObjectOfType<EffectManager>();
         theScoreManager = FindObjectOfType<ScoreManager>();
         theComboManager = FindObjectOfType<ComboManager>();
-
+        theStageManager = FindObjectOfType<StageManager>();
+        thePlayer = FindObjectOfType<PlayerController>();
 
         timingBoxs = new Vector2[timingRect.Length];
 
@@ -65,12 +69,24 @@ public class TimingManager : MonoBehaviour
                     //이펙트 연출
                     if (x < timingBoxs.Length - 2) //bad는 3이므로 2 이하에서만 피격 효과가 나타나도록 
                         theEffect.NoteHitEffect();
-                    theEffect.JudgementEffect(x);   //판정 x를 넘겨서 그에 맞는 이미지가 출력되도록 한다.
+                    
                     //Debug.Log("Hit  " + x);
 
 
-                    //점수 증가
-                    theScoreManager.IncreaseScore(x);   //판정을 알 수 있는 파라미터 x
+                    
+                    if (CheckCanNextPlate())
+                    {
+                        //점수 증가
+                        theScoreManager.IncreaseScore(x);   //판정을 알 수 있는 파라미터 x
+
+                        theStageManager.ShowNextPlate();        //발판 등장
+
+                        theEffect.JudgementEffect(x);   //판정 x를 넘겨서 그에 맞는 이미지가 출력되도록 한다.
+                    }
+                    else
+                    {
+                        theEffect.JudgementEffect(4); 
+                    }
 
                     return true;
                 }
@@ -85,6 +101,23 @@ public class TimingManager : MonoBehaviour
         //Debug.Log("MISS");
     }
 
+    bool CheckCanNextPlate()
+    {
+        if(Physics.Raycast(thePlayer.destPos, Vector3.down, out RaycastHit t_hitinfo, 1.1f))
+        {                   //목적지 좌표에서 아래로 레이저 발사, 충돌한 바닥의 좌표값을 가져온다
+            if(t_hitinfo.transform.CompareTag("BasicPlate"))
+            {
+                BasicPlate t_plate = t_hitinfo.transform.GetComponent<BasicPlate>();
+                if (t_plate.flag)
+                {
+                    t_plate.flag = false;
+                    return true;
+                    
+                }
+            }
+        }
+        return false;
+    }
 
     // Update is called once per frame
     void Update()
