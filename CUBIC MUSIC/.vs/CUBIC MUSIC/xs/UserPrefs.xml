@@ -1,11 +1,9 @@
 ﻿<Properties StartupConfiguration="{1132B04E-7FA9-BA27-E0A4-34F35C5497CD}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Manager/TimingManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Plate/GoalPlate.cs">
     <Files>
-      <File FileName="Assets/Scripts/Manager/Stage.cs" Line="9" Column="1" />
-      <File FileName="Assets/Scripts/Manager/StageManager.cs" Line="34" Column="6" />
-      <File FileName="Assets/Scripts/Manager/TimingManager.cs" Line="85" Column="22" />
-      <File FileName="Assets/Scripts/Plate/BasicPlate.cs" Line="7" Column="29" />
-      <File FileName="Assets/Scripts/Controller/PlayerController.cs" Line="46" Column="1" />
+      <File FileName="Assets/Scripts/Plate/GoalPlate.cs" Line="23" Column="34" />
+      <File FileName="Assets/Scripts/Controller/PlayerController.cs" Line="45" Column="41" />
+      <File FileName="Assets/Scripts/Manager/NoteManager.cs" Line="18" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,10 +12,10 @@
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
                 <Node name="Controller" expanded="True" />
-                <Node name="Manager" expanded="True">
-                  <Node name="TimingManager.cs" selected="True" />
+                <Node name="Manager" expanded="True" />
+                <Node name="Plate" expanded="True">
+                  <Node name="GoalPlate.cs" selected="True" />
                 </Node>
-                <Node name="Plate" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -27,7 +25,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="26f62dea-6433-49c5-b392-0f86b97f4925" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1e31c359-3132-44d5-bcae-df657fdbfd3a" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
