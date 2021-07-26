@@ -5,8 +5,11 @@ using UnityEngine;
 public class TimingManager : MonoBehaviour
 {
 
+
     public List<GameObject> boxNoteList = new List<GameObject>();
     //생성된 노트를 담는 List -> 판정범위에 있는 모든 노트를 비교해야함
+
+    int[] judgementRecord = new int[5];
 
     [SerializeField] Transform Center = null; //판정 범위의 중간을 가리킴
     [SerializeField] RectTransform[] timingRect = null; //다양한 판정 범위를 보여주기 위함
@@ -82,6 +85,9 @@ public class TimingManager : MonoBehaviour
                         theStageManager.ShowNextPlate();        //발판 등장
 
                         theEffect.JudgementEffect(x);   //판정 x를 넘겨서 그에 맞는 이미지가 출력되도록 한다.
+                                                        //판정 연출
+                        judgementRecord[x]++; //    판정 기록
+                                        //ex) 퍼팩트가 뜰 경우 그 값을 ++
                     }
                     else
                     {
@@ -97,6 +103,7 @@ public class TimingManager : MonoBehaviour
         }
         theComboManager.ResetCombo();
         theEffect.JudgementEffect(timingBoxs.Length - 1);
+        MissRecord(); //miss가 나왔을 때도 개수를 count한다.
         return false;
         //Debug.Log("MISS");
     }
@@ -119,9 +126,13 @@ public class TimingManager : MonoBehaviour
         return false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public int[] GetJudgementRecord()
     {
-        
+        return judgementRecord;
+    }
+
+    public void MissRecord()
+    {
+        judgementRecord[3]++;
     }
 }
