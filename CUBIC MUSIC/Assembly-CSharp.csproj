@@ -62,6 +62,7 @@
     <Compile Include="Assets/Scripts/Manager/Stage.cs" />
     <Compile Include="Assets/Scripts/Manager/NoteManager.cs" />
     <Compile Include="Assets/Scripts/Manager/ComboManager.cs" />
+    <Compile Include="Assets/Scripts/Menu/Result.cs" />
     <Compile Include="Assets/Scripts/Manager/ScoreManager.cs" />
     <Compile Include="Assets/Scripts/Manager/StageManager.cs" />
     <Compile Include="Assets/Scripts/Plate/GoalPlate.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="Assets/Scripts/Controller/PlayerController.cs" />
     <Compile Include="Assets/Scripts/Controller/CamaraController.cs" />
     <Compile Include="Assets/Scripts/Manager/Note.cs" />
-    <Compile Include="Assets/Scripts/Menu/Result.cs" />
+    <Compile Include="Assets/Scripts/DeadZone.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Read Me.txt" />

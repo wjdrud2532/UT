@@ -1,13 +1,15 @@
 ﻿<Properties StartupConfiguration="{1132B04E-7FA9-BA27-E0A4-34F35C5497CD}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Menu/Result.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DeadZone.cs">
     <Files>
+      <File FileName="Assets/Scripts/Controller/PlayerController.cs" Line="158" Column="29" />
       <File FileName="Assets/Scripts/Manager/ComboManager.cs" Line="54" Column="27" />
-      <File FileName="Assets/Scripts/Plate/GoalPlate.cs" Line="27" Column="36" />
-      <File FileName="Assets/Scripts/Controller/PlayerController.cs" />
-      <File FileName="Assets/Scripts/Manager/NoteManager.cs" Line="59" Column="47" />
-      <File FileName="Assets/Scripts/Menu/Result.cs" Line="48" Column="24" />
-      <File FileName="Assets/Scripts/Manager/TimingManager.cs" Line="136" Column="26" />
-      <File FileName="Assets/Scripts/Manager/ScoreManager.cs" Line="53" Column="29" />
+      <File FileName="Assets/Scripts/Plate/GoalPlate.cs" />
+      <File FileName="Assets/Scripts/Manager/NoteManager.cs" />
+      <File FileName="Assets/Scripts/Menu/Result.cs" />
+      <File FileName="Assets/Scripts/Manager/TimingManager.cs" />
+      <File FileName="Assets/Scripts/Manager/ScoreManager.cs" />
+      <File FileName="Assets/Scripts/Manager/StageManager.cs" />
+      <File FileName="Assets/Scripts/DeadZone.cs" Line="15" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,10 +19,9 @@
               <Node name="Scripts" expanded="True">
                 <Node name="Controller" expanded="True" />
                 <Node name="Manager" expanded="True" />
-                <Node name="Menu" expanded="True">
-                  <Node name="Result.cs" selected="True" />
-                </Node>
+                <Node name="Menu" expanded="True" />
                 <Node name="Plate" expanded="True" />
+                <Node name="DeadZone.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -30,7 +31,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6ea39731-69db-4e35-a293-129777710eac" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b40b03dc-0d64-45b6-98cf-e9d1ba241d97" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

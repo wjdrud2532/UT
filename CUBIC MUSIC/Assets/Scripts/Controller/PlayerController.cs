@@ -6,10 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     public static bool s_canPresskey = true;
 
-    //이
+    //이동
     [SerializeField] float moveSpeed = 3;
     Vector3 dir = new Vector3();
     public Vector3 destPos = new Vector3();
+    Vector3 originPos = new Vector3();
 
     //회전
     [SerializeField] float spinSpeed = 270;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
 
     bool canMove = true;
+    bool isFalling = false;
 
     //기타
     [SerializeReference] Transform fakeCube = null;     //가짜큐브를 먼저 돌려 놓고, 그 돌아간 만큼의 값을 목표 회전값으로 삼기 위함
@@ -29,20 +31,25 @@ public class PlayerController : MonoBehaviour
 
     TimingManager TheTimingManager;
     CamaraController theCam;
+    Rigidbody myRigid;              //낭떨어지에서 떨어지기 위해서는 중력옵션을 켜야한다.
 
     // Start is called before the first frame update
     void Start()
     {
         TheTimingManager = FindObjectOfType<TimingManager>();
         theCam = FindObjectOfType<CamaraController>();
+        myRigid = GetComponentInChildren<Rigidbody>();          //현재 객체에는 rigid가 없지만 자식 객체인 cube에는 존재, 그 값을 가져오기 위해 inchildren을 사용
+        originPos = transform.position; //시작하자마자 자신의 위치를 저장
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckFalling();
+
         if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
         {
-            if (canMove && s_canPresskey)
+            if (canMove && s_canPresskey && !isFalling)
             {
                 Calc();
 
@@ -127,5 +134,34 @@ public class PlayerController : MonoBehaviour
         }
 
         realCube.localPosition = new Vector3(0, 0, 0);
+    }
+
+    void CheckFalling()     //큐브 아래로 레이저를 쏴서 플레이트가 존재하는지 확인
+    {                       //                              존재한다면 떨어지지 않고, 존재하지 않는다면 떨어진다.
+        if(!isFalling && canMove)
+        {
+            if (!Physics.Raycast(transform.position, Vector3.down, 1.1f))    // ! 확인
+            {
+                Falling();
+            }
+        }
+        
+    }
+
+    void Falling()
+    {
+        isFalling = true;
+        myRigid.useGravity = true;
+        myRigid.isKinematic = false;
+    }
+
+    public void ResetFalling()
+    {
+        isFalling = false;
+        myRigid.useGravity = false;
+        myRigid.isKinematic = true;
+
+        transform.position = originPos;
+        realCube.localPosition = new Vector3(0, 0, 0);   //rigidbody가 없는 부모 객체는 낭떠러지 위에, 자식 객체만 추락중ㅈ
     }
 }
