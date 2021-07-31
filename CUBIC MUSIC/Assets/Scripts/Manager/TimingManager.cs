@@ -30,6 +30,10 @@ public class TimingManager : MonoBehaviour
 
     PlayerController thePlayer;
 
+    StatusManager theStatusManager;
+
+    AudioManager theAudioManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +42,8 @@ public class TimingManager : MonoBehaviour
         theComboManager = FindObjectOfType<ComboManager>();
         theStageManager = FindObjectOfType<StageManager>();
         thePlayer = FindObjectOfType<PlayerController>();
+        theStatusManager = FindObjectOfType<StatusManager>();
+        theAudioManager = AudioManager.instance;
 
         timingBoxs = new Vector2[timingRect.Length];
 
@@ -87,12 +93,16 @@ public class TimingManager : MonoBehaviour
                         theEffect.JudgementEffect(x);   //판정 x를 넘겨서 그에 맞는 이미지가 출력되도록 한다.
                                                         //판정 연출
                         judgementRecord[x]++; //    판정 기록
-                                        //ex) 퍼팩트가 뜰 경우 그 값을 ++
+                                              //ex) 퍼팩트가 뜰 경우 그 값을 ++
+
+                        theStatusManager.CheckShield(); //   쉴드 체크
                     }
                     else
                     {
                         theEffect.JudgementEffect(4); 
                     }
+
+                    theAudioManager.PlaySFX("clap");        //clap와 같은 이름의 효과음 재생
 
                     return true;
                 }
@@ -133,6 +143,13 @@ public class TimingManager : MonoBehaviour
 
     public void MissRecord()
     {
-        judgementRecord[3]++;
+        judgementRecord[4]++;
+        theStatusManager.ResetShieldCombo();
+    }
+
+    public void Initialized()   //게임 재시작시 초기 함수
+    {
+        for (int i = 0; i < judgementRecord.Length; i++)
+            judgementRecord[i] = 0;
     }
 }

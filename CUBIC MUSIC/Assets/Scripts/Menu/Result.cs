@@ -26,6 +26,10 @@ public class Result : MonoBehaviour
 
     public void ShowResult()
     {
+        FindObjectOfType<CenterFlame>().ResetMusic();   //재시작시 초기화
+
+        AudioManager.instance.StopBGM();       //bgm정지 
+
         goUi.SetActive(true);
 
         for(int i = 0; i < txtCount.Length; i ++)
@@ -50,5 +54,12 @@ public class Result : MonoBehaviour
         txtScore.text = string.Format("{0:#,##0}", t_currentScore);
         txtMaxCombo.text = string.Format("{0:#,##0}", t_maxCombo);
         txtCoin.text = string.Format("{0:#,##0}", t_coin);
+    }
+
+    public void BtnMainMene()
+    {
+        goUi.SetActive(false);
+        GameManager.instance.MainMenu();
+        theCombo.ResetCombo();
     }
 }

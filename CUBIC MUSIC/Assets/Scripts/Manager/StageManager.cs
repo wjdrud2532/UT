@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    GameObject currentStage;
+
     [SerializeField] GameObject stage = null;
     Transform[] stagePlates;
 
@@ -14,9 +16,23 @@ public class StageManager : MonoBehaviour
     int totalPlateCount = 0;
 
     // Start is called before the first frame update
-    void Start()
+    //void Start()
+
+    public void RemoveStage()   //기존의 스테이지를 삭제
     {
-        stagePlates = stage.GetComponent<Stage>().plates;
+        if (currentStage != null)    //이전에 스테이지를 호출했다면
+            Destroy(currentStage);  //삭제
+    }
+
+    public void SettingStage()
+    {
+        //스테이지 새로 생성시 stepcount를 0으로 초기화
+        stepCount = 0;
+
+        //프리팹 생성                        //위치        //회전값 X
+        currentStage = Instantiate(stage, Vector3.zero, Quaternion.identity);
+
+        stagePlates = currentStage.GetComponent<Stage>().plates;
         totalPlateCount = stagePlates.Length;
 
         for(int i = 0; i < totalPlateCount; i ++)
@@ -47,5 +63,7 @@ public class StageManager : MonoBehaviour
         }
 
         stagePlates[p_num].position = t_destPos;
-    }   
+    }
+
+    
 }

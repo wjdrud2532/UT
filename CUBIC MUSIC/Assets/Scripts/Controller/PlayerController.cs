@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     TimingManager TheTimingManager;
     CamaraController theCam;
     Rigidbody myRigid;              //낭떨어지에서 떨어지기 위해서는 중력옵션을 켜야한다.
+    StatusManager theStaus;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,26 +42,31 @@ public class PlayerController : MonoBehaviour
         theCam = FindObjectOfType<CamaraController>();
         myRigid = GetComponentInChildren<Rigidbody>();          //현재 객체에는 rigid가 없지만 자식 객체인 cube에는 존재, 그 값을 가져오기 위해 inchildren을 사용
         originPos = transform.position; //시작하자마자 자신의 위치를 저장
+        theStaus = FindObjectOfType<StatusManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckFalling();
-
-        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
+        if (GameManager.instance.isStartGame)
         {
-            if (canMove && s_canPresskey && !isFalling)
-            {
-                Calc();
+            CheckFalling();
 
-                //판정체크
-                if (TheTimingManager.CheckTiming())
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
+            {
+                if (canMove && s_canPresskey && !isFalling)
                 {
-                    StartAction();
+                    Calc();
+
+                    //판정체크
+                    if (TheTimingManager.CheckTiming())
+                    {
+                        StartAction();
+                    }
                 }
             }
         }
+        
 
     }
 
@@ -157,11 +164,30 @@ public class PlayerController : MonoBehaviour
 
     public void ResetFalling()
     {
+        theStaus.DecreaseHp(1);     //큐브가 떨어질 경우 1만큼 체력을 감소시킨다.
+        AudioManager.instance.PlaySFX("Falling");
+
+        if (!theStaus.IsDead())       //체력이 감소된 뒤에도 체력이 남아있다면 위치를 되돌리고 계속 이어나간다
+        {
+            isFalling = false;
+            myRigid.useGravity = false;
+            myRigid.isKinematic = true;
+
+            transform.position = originPos;
+            realCube.localPosition = new Vector3(0, 0, 0);   //rigidbody가 없는 부모 객체는 낭떠러지 위에, 자식 객체만 추락중ㅈ
+        }
+        
+    }
+
+    public void Initialized()   //게임 재시작시 초기 함수
+    {
+        transform.position = Vector3.zero;  //위치 초기	
+        destPos = Vector3.zero; 
+        realCube.localPosition = Vector3.zero;
+        canMove = true;
+        s_canPresskey = true;   //키 입력 가능하도록 
         isFalling = false;
         myRigid.useGravity = false;
         myRigid.isKinematic = true;
-
-        transform.position = originPos;
-        realCube.localPosition = new Vector3(0, 0, 0);   //rigidbody가 없는 부모 객체는 낭떠러지 위에, 자식 객체만 추락중ㅈ
     }
 }

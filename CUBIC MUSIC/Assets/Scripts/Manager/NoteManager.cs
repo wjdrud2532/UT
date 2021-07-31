@@ -8,7 +8,7 @@ public class NoteManager : MonoBehaviour
     public int bpm = 0;
     double currentTime = 0d;    //리듬게임이라 정확도가 중요하기 때문에 int가 아닌 double을 사
 
-    bool noteActive = true;
+    //bool noteActive = true;
 
     [SerializeField] Transform tfNoteAppear = null;
     //[SerializeField] GameObject goNote = null;
@@ -27,7 +27,8 @@ public class NoteManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(noteActive)
+        //if(noteActive)
+        if(GameManager.instance.isStartGame)
         { 
 
         currentTime += Time.deltaTime;
@@ -57,7 +58,7 @@ public class NoteManager : MonoBehaviour
             if (collision.GetComponent<Note>().GetNoteFlag())   //이미지의 활성상태를 리턴한다 -> 노트판정이 완료되어 이미지를 지웠다면 끝에 다다랐을 때 miss를 활성화하지 않는다.
             {
                 TheTimingManager.MissRecord();
-                theEffectManager.JudgementEffect(3);
+                theEffectManager.JudgementEffect(4);
                 theComboManager.ResetCombo();
             }
             TheTimingManager.boxNoteList.Remove(collision.gameObject);  //노드가 파괴될ㄷ 때 해당 노트를 삭
@@ -71,12 +72,16 @@ public class NoteManager : MonoBehaviour
 
     public void RemoveNote()
     {
-        noteActive = false;
+        //noteActive = false;
+        GameManager.instance.isStartGame = false;
+
         for (int i = 0; i < TheTimingManager.boxNoteList.Count; i ++)
         {
             TheTimingManager.boxNoteList[i].SetActive(false);   //노트들을 모두 비활성화(안나옴)
             ObjectPool.instance.noteQueue.Enqueue(TheTimingManager.boxNoteList[i]);
         }
+
+        TheTimingManager.boxNoteList.Clear();   //리스트 초기화, 리스트에 남아있는 인덱스를 모두 초기화, 재시작시 필요
     }
 }
 

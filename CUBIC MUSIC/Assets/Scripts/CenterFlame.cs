@@ -5,14 +5,14 @@ using UnityEngine;
 public class CenterFlame : MonoBehaviour
 {
 
-    AudioSource myAudio;
+    //AudioSource myAudio;
     bool musicStart = false;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        myAudio = GetComponent<AudioSource>();
-    }
+    //void Start()
+    //{
+    //    myAudio = GetComponent<AudioSource>();
+    //}
 
     // Update is called once per frame
     void Update()
@@ -26,9 +26,16 @@ public class CenterFlame : MonoBehaviour
         {
             if (collision.CompareTag("Note"))
             {
-                myAudio.Play();
+                //myAudio.Play();
+                AudioManager.instance.PlayBGM("BGM0");  //BGM0의 이름을 가진 음악을 재생
+               
                 musicStart = true; 
             }
         }
+    }
+
+    public void ResetMusic()        //재시작시 호출
+    {
+        musicStart = false;
     }
 }

@@ -26,6 +26,12 @@ public class ScoreManager : MonoBehaviour
         txtScore.text = "0";
     }
 
+    public void Initialized()       //게임 재시작시 초기화 함수
+    {
+        currentScore = 0;
+        txtScore.text = "0";
+    }
+
     public void IncreaseScore(int p_JudgementState) //어떤 노트 판정을 받았는지를 인자로 받는다.
     {
         //콤보 증가
