@@ -8,6 +8,8 @@ public class CenterFlame : MonoBehaviour
     //AudioSource myAudio;
     bool musicStart = false;
 
+    public string bgmName = "";
+
     // Start is called before the first frame update
     //void Start()
     //{
@@ -27,7 +29,7 @@ public class CenterFlame : MonoBehaviour
             if (collision.CompareTag("Note"))
             {
                 //myAudio.Play();
-                AudioManager.instance.PlayBGM("BGM0");  //BGM0의 이름을 가진 음악을 재생
+                AudioManager.instance.PlayBGM(bgmName);  //BGM0의 이름을 가진 음악을 재생
                
                 musicStart = true; 
             }

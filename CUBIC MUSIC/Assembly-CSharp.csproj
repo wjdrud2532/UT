@@ -57,29 +57,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/ObjectPool.cs" />
+    <Compile Include="Assets/Scripts/Manager/AudioManager.cs" />
     <Compile Include="Assets/Scripts/CenterFlame.cs" />
     <Compile Include="Assets/Scripts/Manager/TimingManager.cs" />
     <Compile Include="Assets/Scripts/Manager/Stage.cs" />
     <Compile Include="Assets/Scripts/Manager/NoteManager.cs" />
+    <Compile Include="Assets/Scripts/Manager/DatabaseManager.cs" />
     <Compile Include="Assets/Scripts/Manager/ComboManager.cs" />
     <Compile Include="Assets/Scripts/Menu/Result.cs" />
     <Compile Include="Assets/Scripts/DeadZone.cs" />
     <Compile Include="Assets/Scripts/Manager/ScoreManager.cs" />
     <Compile Include="Assets/Scripts/Manager/StageManager.cs" />
+    <Compile Include="Assets/Scripts/Manager/StatusManager.cs" />
     <Compile Include="Assets/Scripts/Plate/GoalPlate.cs" />
     <Compile Include="Assets/Scripts/Manager/EffectManager.cs" />
     <Compile Include="Assets/Scripts/Plate/BasicPlate.cs" />
     <Compile Include="Assets/Scripts/Controller/PlayerController.cs" />
-    <Compile Include="Assets/Scripts/Controller/CamaraController.cs" />
-    <Compile Include="Assets/Scripts/Manager/Note.cs" />
-    <Compile Include="Assets/Scripts/Manager/StatusManager.cs" />
-    <Compile Include="Assets/Scripts/Manager/AudioManager.cs" />
-    <Compile Include="Assets/Scripts/Menu/TitleMenu.cs" />
     <Compile Include="Assets/Scripts/Menu/StageMenu.cs" />
+    <Compile Include="Assets/Scripts/Controller/CamaraController.cs" />
     <Compile Include="Assets/Scripts/Manager/GameManager.cs" />
+    <Compile Include="Assets/Scripts/Manager/Note.cs" />
+    <Compile Include="Assets/Scripts/Menu/TitleMenu.cs" />
+    <Compile Include="Assets/TheBackend/Toolkit/SendQueueMgr.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets/TheBackend/Plugins/Android/TheBackend.iOS.dll" />
     <None Include="Assets/Read Me.txt" />
+    <None Include="Assets/TheBackend/Plugins/Settings/TheBackendSettings.dll" />
+    <None Include="Assets/TheBackend/Plugins/LitJSON.dll" />
+    <None Include="Assets/TheBackend/Plugins/Settings/TheBackendHashKeySettings.dll" />
+    <None Include="Assets/TheBackend/Plugins/iOS/TheBackend.iOS.dll" />
+    <None Include="Assets/TheBackend/Plugins/Backend.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -297,6 +305,21 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="TheBackendSettings">
+      <HintPath>Assets/TheBackend/Plugins/Settings/TheBackendSettings.dll</HintPath>
+    </Reference>
+    <Reference Include="TheBackendHashKeySettings">
+      <HintPath>Assets/TheBackend/Plugins/Settings/TheBackendHashKeySettings.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJSON">
+      <HintPath>Assets/TheBackend/Plugins/LitJSON.dll</HintPath>
+    </Reference>
+    <Reference Include="TheBackend.iOS">
+      <HintPath>Assets/TheBackend/Plugins/Android/TheBackend.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Backend">
+      <HintPath>Assets/TheBackend/Plugins/Backend.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

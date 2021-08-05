@@ -6,7 +6,7 @@ public class StageManager : MonoBehaviour
 {
     GameObject currentStage;
 
-    [SerializeField] GameObject stage = null;
+    [SerializeField] GameObject[] stageArray = null;
     Transform[] stagePlates;
 
     [SerializeField] float offsetY = 3;
@@ -24,13 +24,13 @@ public class StageManager : MonoBehaviour
             Destroy(currentStage);  //삭제
     }
 
-    public void SettingStage()
+    public void SettingStage(int p_songNum)
     {
         //스테이지 새로 생성시 stepcount를 0으로 초기화
         stepCount = 0;
 
         //프리팹 생성                        //위치        //회전값 X
-        currentStage = Instantiate(stage, Vector3.zero, Quaternion.identity);
+        currentStage = Instantiate(stageArray[p_songNum], Vector3.zero, Quaternion.identity);
 
         stagePlates = currentStage.GetComponent<Stage>().plates;
         totalPlateCount = stagePlates.Length;
